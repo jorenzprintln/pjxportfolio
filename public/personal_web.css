@@ -1330,3 +1330,61 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
 }
+/* Responsive Design for About Section */
+@media (max-width: 768px) {
+    .tab-navigation {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .tab-btn {
+        padding: 0.875rem 1.5rem;
+        border-radius: 0;
+    }
+    
+    .tab-btn.active::before {
+        width: 30%;
+    }
+    
+    .card-content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .personal-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .profile-picture {
+        width: 200px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    
+    .personal-details {
+        gap: 1.5rem;
+    }
+    
+    .info-list-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .skill-category {
+        padding: 1.5rem;
+    }
+    
+    .tech-icons-grid {
+        justify-content: center;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .education-title {
+        font-size: 1.75rem;
+    }
+}
