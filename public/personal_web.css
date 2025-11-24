@@ -52,6 +52,8 @@ body {
 .nav-logo {
     font-weight: 700;
     font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
 }
 
 
@@ -94,6 +96,7 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    user-select: none;
 }
 
 .bar {
@@ -222,6 +225,7 @@ body {
     display: inline-block;
     text-align: center;
     cursor: pointer;
+    user-select: none;
     border: none;
     font-size: 1rem;
 }
@@ -402,6 +406,7 @@ body {
     border-radius: 15px;
     transition: all 0.3s ease;
     position: relative;
+    user-select: none;  
 }
 
 .tab-btn:hover {
@@ -519,7 +524,154 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
 }
+/* Tech Icons Horizontal Scroll Animation */
+.tech-scroll-container {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    position: relative;
+    width: 100%;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
 
+.tech-scroll-track {
+    display: flex;
+    gap: 1.5rem;
+    animation: scroll-left 20s linear infinite;
+    width: fit-content;
+}
+
+.tech-scroll-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.tech-icon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 140px;
+}
+
+.tech-icon-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+    z-index: 10;
+}
+
+.tech-icon-item img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0.9);
+    transition: all 0.3s ease;
+}
+
+.tech-icon-item:hover img {
+    filter: brightness(1.2);
+    transform: rotate(5deg);
+}
+
+.tech-icon-item span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Mobile Responsive for Tech Icons */
+@media (max-width: 768px) {
+    .tech-scroll-container {
+        padding: 1rem 0;
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 5%,
+            black 95%,
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 5%,
+            black 95%,
+            transparent
+        );
+    }
+    
+    .tech-scroll-track {
+        gap: 1rem;
+        animation: scroll-left 15s linear infinite;
+    }
+    
+    .tech-icon-item {
+        padding: 0.75rem 1rem;
+        min-width: 120px;
+        gap: 0.5rem;
+    }
+    
+    .tech-icon-item img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .tech-icon-item span {
+        font-size: 0.85rem;
+    }
+    
+    .tech-icon-item:hover {
+        transform: translateY(-3px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-scroll-track {
+        gap: 0.75rem;
+        animation: scroll-left 12s linear infinite;
+    }
+    
+    .tech-icon-item {
+        padding: 0.6rem 0.85rem;
+        min-width: 110px;
+    }
+    
+    .tech-icon-item img {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .tech-icon-item span {
+        font-size: 0.8rem;
+    }
+}
 /* Tech Icons Grid */
 .tech-icons-grid {
     display: flex;
@@ -1387,4 +1539,4 @@ body {
     .education-title {
         font-size: 1.75rem;
     }
-}
+}   

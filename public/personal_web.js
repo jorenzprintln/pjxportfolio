@@ -1,28 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS with your public key
     emailjs.init('J8PYga9msHdegeKll');
-    
-    // Initialize all functionality
+
     initNavigation();
     initScrollAnimations();
     initContactForm();
     initSmoothScrolling();
-    initTabs(); // Add this
-    initSkillBarsAnimation(); // Add this
+    initTabs(); 
+    initSkillBarsAnimation(); 
 });
-// Navigation functionality
 function initNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Toggle mobile menu
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
@@ -30,14 +25,11 @@ function initNavigation() {
         });
     });
 
-    // Update active nav link on scroll
     window.addEventListener('scroll', updateActiveLink);
-    
-    // Set initial active link
+
     updateActiveLink();
 }
 
-// Update active navigation link based on scroll position
 function updateActiveLink() {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -62,25 +54,22 @@ function updateActiveLink() {
     });
 }
 
-// Smooth scrolling for navigation links
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-link');
     const heroButtons = document.querySelectorAll('.hero-buttons a');
     
-    // Combine both nav links and hero buttons
     const allLinks = [...navLinks, ...heroButtons];
     
     allLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
-            // Check if it's an internal link
+
             if (href.startsWith('#')) {
                 e.preventDefault();
                 
                 const targetSection = document.querySelector(href);
                 if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                    const offsetTop = targetSection.offsetTop - 80; 
                     
                     window.scrollTo({
                         top: offsetTop,
@@ -92,7 +81,6 @@ function initSmoothScrolling() {
     });
 }
 
-// Scroll animations
 function initScrollAnimations() {
     const sections = document.querySelectorAll('.section');
     const observerOptions = {
@@ -105,7 +93,6 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Animate skill items with delay
                 const skillItems = entry.target.querySelectorAll('.skill-item');
                 skillItems.forEach((item, index) => {
                     setTimeout(() => {
@@ -114,7 +101,6 @@ function initScrollAnimations() {
                     }, index * 200);
                 });
 
-                // Animate project cards with delay
                 const projectCards = entry.target.querySelectorAll('.project-card');
                 projectCards.forEach((card, index) => {
                     setTimeout(() => {
@@ -123,7 +109,7 @@ function initScrollAnimations() {
                     }, index * 200);
                 });
 
-                // Animate contact methods with delay
+
                 const contactMethods = entry.target.querySelectorAll('.contact-method');
                 contactMethods.forEach((method, index) => {
                     setTimeout(() => {
@@ -139,7 +125,6 @@ function initScrollAnimations() {
         observer.observe(section);
     });
 
-    // Initialize skill items for animation
     const skillItems = document.querySelectorAll('.skill-item');
     skillItems.forEach(item => {
         item.style.opacity = '0';
@@ -147,7 +132,6 @@ function initScrollAnimations() {
         item.style.transition = 'all 0.6s ease';
     });
 
-    // Initialize project cards for animation
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.style.opacity = '0';
@@ -155,7 +139,6 @@ function initScrollAnimations() {
         card.style.transition = 'all 0.6s ease';
     });
 
-    // Initialize contact methods for animation
     const contactMethods = document.querySelectorAll('.contact-method');
     contactMethods.forEach(method => {
         method.style.opacity = '0';
@@ -164,14 +147,12 @@ function initScrollAnimations() {
     });
 }
 
-// Contact form functionality
 function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
-        
-        // Add input validation
+
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', validateInput);
@@ -180,7 +161,6 @@ function initContactForm() {
     }
 }
 
-// Handle form submission
 function handleFormSubmit(e) {
     e.preventDefault();
     
@@ -188,24 +168,20 @@ function handleFormSubmit(e) {
     const formData = new FormData(form);
     const submitBtn = form.querySelector('button[type="submit"]');
     
-    // Get form values
     const name = formData.get('name').trim();
     const email = formData.get('email').trim();
     const message = formData.get('message').trim();
     
-    // Validate form
     if (!validateForm(name, email, message)) {
         return;
     }
-    
-    // Show loading state
+ 
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
-    
-    // 🔥 REPLACE THESE WITH YOUR ACTUAL IDs
-    const serviceID = 'service_4zw4aaf';      // From Step 3
-    const templateID = 'template_hezp4ka';    // From Step 4  
+
+    const serviceID = 'service_4zw4aaf';      
+    const templateID = 'template_hezp4ka';    
     const publicKey = 'J8PYga9msHdegeKll';
     
     const templateParams = {
@@ -229,7 +205,7 @@ function handleFormSubmit(e) {
             submitBtn.disabled = false;
         });
 }
-// Validate individual input
+
 function validateInput(e) {
     const input = e.target;
     const value = input.value.trim();
@@ -249,7 +225,6 @@ function validateInput(e) {
     return true;
 }
 
-// Clear validation error
 function clearValidationError(e) {
     const input = e.target;
     const errorElement = input.parentNode.querySelector('.error-message');
@@ -261,7 +236,6 @@ function clearValidationError(e) {
     input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
 }
 
-// Show input error
 function showInputError(input, message) {
     const errorElement = document.createElement('div');
     errorElement.className = 'error-message';
@@ -277,7 +251,6 @@ function showInputError(input, message) {
     input.parentNode.appendChild(errorElement);
 }
 
-// Validate entire form
 function validateForm(name, email, message) {
     let isValid = true;
     
@@ -309,13 +282,11 @@ function validateForm(name, email, message) {
     return isValid;
 }
 
-// Email validation
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Show notification
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -338,7 +309,6 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Remove notification after 5 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => {
@@ -349,7 +319,6 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Add CSS animations dynamically
 function addAnimations() {
     const style = document.createElement('style');
     style.textContent = `
@@ -389,21 +358,19 @@ function addAnimations() {
     document.head.appendChild(style);
 }
 
-// Initialize animations
 addAnimations();
 
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = '#000000'; // Force black instead of white
-        navbar.style.boxShadow = '0 2px 20px rgba(255, 255, 255, 0.1)'; // White shadow for black bg
+        navbar.style.background = '#000000'; 
+        navbar.style.boxShadow = '0 2px 20px rgba(255, 255, 255, 0.1)'; 
     } else {
-        navbar.style.background = '#000000'; // Force black instead of white
+        navbar.style.background = '#000000'; 
         navbar.style.boxShadow = 'none';
     }
 });
 
-// Typing effect for hero title (optional enhancement)
 function initTypingEffect() {
     const heroTitle = document.querySelector('.hero-title .name-highlight');
     if (heroTitle) {
@@ -422,7 +389,6 @@ function initTypingEffect() {
     }
 }
 
-// Uncomment the line below if you want the typing effect
  setTimeout(initTypingEffect, 1000);
 
  function initTabs() {
@@ -432,16 +398,13 @@ function initTypingEffect() {
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetTab = button.getAttribute('data-tab');
-            
-            // Remove active class from all buttons and contents
+
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding content
+ 
             button.classList.add('active');
             document.getElementById(targetTab).classList.add('active');
-            
-            // Animate skill bars when skills tab is opened
+
             if (targetTab === 'skills') {
                 animateSkillBars();
             }
@@ -449,17 +412,14 @@ function initTypingEffect() {
     });
 }
 
-// Animate skill bars
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-bar-fill');
     
     skillBars.forEach((bar, index) => {
         const width = bar.getAttribute('data-width');
-        
-        // Reset width
+
         bar.style.width = '0';
-        
-        // Animate with delay for each bar
+
         setTimeout(() => {
             bar.style.setProperty('--skill-width', width);
             bar.classList.add('animate');
@@ -468,7 +428,6 @@ function animateSkillBars() {
     });
 }
 
-// Initialize skill bars animation on scroll
 function initSkillBarsAnimation() {
     const skillsTab = document.getElementById('skills');
     
@@ -509,5 +468,20 @@ function initTabKeyboardNavigation() {
     });
 }
 
-// Call this in DOMContentLoaded if you want keyboard navigation
 initTabKeyboardNavigation();
+
+document.querySelector('.nav-logo').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    if (window.history.pushState) {
+        window.history.pushState('', document.title, window.location.pathname);
+    }
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        location.reload(true);
+    }, 800);
+});
