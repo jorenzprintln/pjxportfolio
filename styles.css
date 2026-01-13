@@ -503,3 +503,247 @@ body {
         font-size: 1.3rem;
     }
 }
+
+/* Two cards container below About */
+.two-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Featured Projects Card - Takes dominant space */
+.featured-card {
+    flex: 1;
+    min-height: 200px; /* Dominant height */
+}
+
+/* Social Links Card - Smaller, won't overflow */
+.social-card {
+    flex: 0 0 auto;
+    height: fit-content;
+    max-height: 140px; /* Fixed maximum height */
+}
+
+
+/* Make Experience card align with the height of two cards */
+.content-grid {
+    display: grid;
+    grid-template-columns: 58% 1fr;
+    gap: 2rem;
+    margin-left: 5rem;
+    align-items: start;
+    grid-template-areas: 
+        "about experience"
+        "twocards experience";
+}
+
+/* Assign grid areas */
+.about-card {
+    grid-area: about;
+}
+
+.two-cards-container {
+    grid-area: twocards;
+}
+
+.experience-card {
+    grid-area: experience;
+    height: 100%; /* Take full height of the grid row */
+    align-self: stretch; /* Stretch to match the combined height of About + two cards */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "about"
+            "twocards"
+            "experience";
+        margin-left: 3rem;
+    }
+    
+    .experience-card {
+        height: auto;
+    }
+}
+
+@media (max-width: 968px) {
+    .content-grid {
+        margin-left: 0;
+    }
+    
+    .featured-card {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 640px) {
+    .featured-card {
+        min-height: 250px;
+    }
+    
+    .social-card {
+        max-height: 180px;
+    }
+}
+
+.card-header h2{
+    font-size: 1.1rem;
+}
+/* Social Links Styles - Horizontal */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: -0.8rem; /* Move icons up */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    min-width: 110px;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent);
+    background: var(--bg-primary);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.social-link span {
+    font-size: 0.85rem;
+}
+
+/* Specific icon colors on hover */
+.social-link:nth-child(1):hover svg { /* Facebook */
+    fill: #1877F2;
+}
+
+.social-link:nth-child(2):hover svg { /* Instagram */
+    fill: #E4405F;
+}
+
+.social-link:nth-child(3):hover svg { /* GitHub */
+    fill: #333;
+}
+
+[data-theme="dark"] .social-link:nth-child(3):hover svg {
+    fill: #f0f0f0;
+}
+
+.social-link:nth-child(4):hover svg { /* LinkedIn */
+    fill: #0A66C2;
+}
+
+.social-link:hover span {
+    color: var(--accent);
+}
+
+/* Adjust social card height for the new content */
+.social-card {
+    flex: 0 0 auto;
+    height: fit-content;
+    min-height: auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Updated Footer Styles - Transparent */
+.main-footer {
+    background: transparent;
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+
+/* Responsive adjustments for social links and footer */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .social-link {
+        min-width: 100px;
+        padding: 0.6rem 0.75rem;
+        gap: 0.4rem;
+    }
+    
+    .social-link span {
+        font-size: 0.8rem;
+    }
+    
+    .footer-content {
+        padding: 0 1.5rem;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+    
+    .footer-link {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    
+    .social-link {
+        min-width: auto;
+        justify-content: flex-start;
+        padding: 0.6rem 1rem;
+    }
+}
