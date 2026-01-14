@@ -33,6 +33,34 @@ function loadTheme() {
     updateProfilePicture(savedTheme);
 }
 
+// Send Email function with device detection
+function sendEmail() {
+    const yourEmail = 'jorenzlnu@gmail.com';
+    const subject = encodeURIComponent('Hello from your portfolio');
+    const body = encodeURIComponent('Hi Paul,\n\nI visited your portfolio and would like to connect with you.\n\nBest regards,\n[Your Name]');
+    
+    // Check if user is likely on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // For mobile devices, use a different approach
+        // Gmail app URL scheme for iOS/Android
+        const gmailAppUrl = `googlegmail://co?to=${yourEmail}&subject=${subject}&body=${body}`;
+        
+        // Try to open Gmail app first
+        window.location.href = gmailAppUrl;
+        
+        // If Gmail app is not installed, fall back to mailto after a delay
+        setTimeout(function() {
+            window.location.href = `mailto:${yourEmail}?subject=${subject}&body=${body}`;
+        }, 500);
+    } else {
+        // For desktop, use Gmail web
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${yourEmail}&su=${subject}&body=${body}`;
+        window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    }
+}
+
 // Initialize theme when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     loadTheme();
@@ -41,22 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Button functionality
 function initButtons() {
-    // View Resume button
-    const resumeBtn = document.querySelector('.btn-secondary');
-    if (resumeBtn) {
-        resumeBtn.addEventListener('click', function() {
-            // Replace with your actual resume PDF path
-            alert('Resume download functionality - Connect this to your actual resume PDF file');
-            // Uncomment and add your resume path:
-            // window.open('path/to/your/resume.pdf', '_blank');
-        });
-    }
-
     // Send Email button
     const emailBtn = document.querySelector('.btn-primary');
     if (emailBtn) {
-        emailBtn.addEventListener('click', function() {
-            window.location.href = 'mailto:jorenzlnu@gmail.com?subject=Hello%20from%20your%20portfolio&body=Hi%20Paul,%0D%0A%0D%0A';
+        emailBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            sendEmail();
         });
     }
 }
