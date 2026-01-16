@@ -94,7 +94,7 @@
                             <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                         </svg>
                         <h2>Featured Projects</h2>
-                    </div>
+                    </div> 
                     <div class="card-content">
                         <div class="project-grid">
                             <a href="#" class="project-item">
@@ -250,8 +250,42 @@
         </div>
     </main>
 
+
+    <div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        
+        <div class="modal-body">
+            <!-- Image Gallery Section (hidden for BlowLock) -->
+            <div class="modal-gallery" id="modalGallery" style="display: none;">
+                <button class="gallery-nav gallery-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+                
+                <div class="gallery-image-container">
+                    <img id="galleryImage" src="" alt="Project Screenshot">
+                </div>
+                
+                <button class="gallery-nav gallery-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+                
+                <div class="gallery-indicators" id="galleryIndicators"></div>
+            </div>
+            
+            <!-- Description Section -->
+            <div class="modal-description">
+                <h2 id="modalTitle"></h2>
+                <div id="modalDescription"></div>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
-    
 </body>
 <!-- Footer -->
 <!-- Footer -->
