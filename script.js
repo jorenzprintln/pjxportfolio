@@ -203,6 +203,60 @@ const projects = {
             <p>Designed for Bachelor of Music in Music Education (BMME) students at Leyte Normal University and anyone interested in learning traditional Filipino angklung music in an engaging, interactive way.</p>
         `
     },
+    babatngon: {
+    title: "Babatngon Explorer - Tourism & Resort Discovery Platform",
+    hasGallery: true,
+    images: [
+        'public/images/babatngon_explorer/homepage.png',
+        'public/images/babatngon_explorer/explore.png',
+        'public/images/babatngon_explorer/coms.png',
+        'public/images/babatngon_explorer/register.png',
+        'public/images/babatngon_explorer/login.png',
+        'public/images/babatngon_explorer/dashboard.png',
+        'public/images/babatngon_explorer/exploreplace.png',
+        'public/images/babatngon_explorer/details1.png',
+        'public/images/babatngon_explorer/details2.png',
+        'public/images/babatngon_explorer/loc.png',
+        'public/images/babatngon_explorer/reb.png',
+        'public/images/babatngon_explorer/save.png',
+        'public/images/babatngon_explorer/rev.png',
+    ],
+    description: `
+        <p><strong>Babatngon Explorer</strong> is a comprehensive web-based tourism platform designed to showcase the beautiful resorts and tourist attractions of Babatngon, Leyte. This interactive website serves as a digital guide for tourists and locals alike, making it easier to discover, explore, and plan visits to the municipality's scenic destinations.</p>
+        
+        <h3>User Features:</h3>
+        <ul>
+            <li><strong>User Authentication:</strong> Secure login and registration system allowing users to create personalized accounts and access exclusive features.</li>
+            <li><strong>Resort Discovery:</strong> Browse through a curated collection of resorts and tourist attractions in Babatngon, Leyte with detailed information and images.</li>
+            <li><strong>Bookmark System:</strong> Save your favorite resorts and attractions to your personal collection for easy access and future trip planning.</li>
+            <li><strong>Review & Ratings:</strong> Share your experiences by leaving reviews and ratings for resorts you've visited, helping other travelers make informed decisions.</li>
+            <li><strong>Interactive Maps:</strong> View exact locations of resorts and tourist spots using integrated Google Maps API for accurate geographical information.</li>
+            <li><strong>Turn-by-Turn Directions:</strong> Get real-time navigation from your current location to any resort using Google Directions API, making travel planning seamless.</li>
+        </ul>
+        
+        <h3>Key Functionalities:</h3>
+        <ul>
+            <li><strong>Resort Profiles:</strong> Each resort features comprehensive details including amenities, contact information, photos, and user reviews.</li>
+            <li><strong>Location Services:</strong> Automatically detect your current location and calculate the best routes to your chosen destination.</li>
+            <li><strong>Community Reviews:</strong> Read authentic reviews from other visitors to help plan your perfect trip to Babatngon.</li>
+            <li><strong>User Dashboard:</strong> Manage your bookmarks, reviews, and account settings all in one convenient location.</li>
+        </ul>
+        
+        <h3>How It Works:</h3>
+        <p>Create an account or log in to start exploring. Browse through the available resorts and tourist attractions in Babatngon, Leyte. Click on any destination to view detailed information, photos, and reviews. Bookmark places you want to visit, leave reviews for places you've been, and use the integrated map feature to view locations and get step-by-step directions from your current position to your chosen resort.</p>
+        
+        <h3>Technology Stack:</h3>
+        <ul>
+            <li><strong>Google Maps API:</strong> For displaying interactive maps and precise location markers</li>
+            <li><strong>Google Directions API:</strong> For providing real-time navigation and route planning</li>
+            <li><strong>Web Technologies:</strong> Built as a responsive web application accessible from any device</li>
+            <li><strong>User Authentication System:</strong> Secure login and registration for personalized user experiences</li>
+        </ul>
+        
+        <h3>Purpose:</h3>
+        <p>Babatngon Explorer aims to promote local tourism in Babatngon, Leyte by making it easier for visitors to discover hidden gems, plan their trips efficiently, and contribute to the local community through authentic reviews and recommendations. The platform bridges the gap between tourists and the beautiful destinations that Babatngon has to offer.</p>
+    `
+}
 };
 
 // Modal functionality
