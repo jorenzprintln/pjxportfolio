@@ -1,4 +1,3 @@
-// Theme toggle functionality
 function toggleTheme() {
     const html = document.documentElement;
     const currentTheme = html.getAttribute('data-theme');
@@ -9,7 +8,6 @@ function toggleTheme() {
     updateProfilePicture(newTheme);
 }
 
-// Update profile picture based on theme
 function updateProfilePicture(theme) {
     const profileImg = document.querySelector('.profile-image-compact');
     if (profileImg) {
@@ -18,52 +16,40 @@ function updateProfilePicture(theme) {
         } else {
             profileImg.src = 'public/images/portfolio.png';
         }
-        
-        // Update onerror fallback
         profileImg.onerror = function() {
             this.src = 'https://ui-avatars.com/api/?name=Paul+Jorenz+Pablo&size=140&background=2563eb&color=fff&bold=true';
         };
     }
 }
 
-// Load saved theme on page load
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateProfilePicture(savedTheme);
 }
 
-// Send Email function with device detection
 function sendEmail() {
     const yourEmail = 'jorenzlnu@gmail.com';
     const subject = encodeURIComponent('Hello from your portfolio');
     const body = encodeURIComponent('Hi Paul,\n\nI visited your portfolio and would like to connect with you.\n\nBest regards,\n[Your Name]');
-    
-    // Check if user is likely on a mobile device
+ 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // For mobile devices, use a different approach
-        // Gmail app URL scheme for iOS/Android
         const gmailAppUrl = `googlegmail://co?to=${yourEmail}&subject=${subject}&body=${body}`;
-        
-        // Try to open Gmail app first
+
         window.location.href = gmailAppUrl;
-        
-        // If Gmail app is not installed, fall back to mailto after a delay
+
         setTimeout(function() {
             window.location.href = `mailto:${yourEmail}?subject=${subject}&body=${body}`;
         }, 500);
     } else {
-        // For desktop, use Gmail web
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${yourEmail}&su=${subject}&body=${body}`;
         window.open(gmailUrl, '_blank', 'noopener,noreferrer');
     }
 }
 
-// Button functionality
 function initButtons() {
-    // Send Email button
     const emailBtn = document.querySelector('.btn-primary');
     if (emailBtn) {
         emailBtn.addEventListener('click', function(e) {
@@ -73,7 +59,6 @@ function initButtons() {
     }
 }
 
-// Add smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -87,9 +72,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ==================== PROJECT MODAL FUNCTIONALITY ====================
 
-// Project data
 const projects = {
     blowlock: {
         title: "BlowLock - File Encryption App",
@@ -259,24 +242,20 @@ const projects = {
 }
 };
 
-// Modal functionality
 let modal, modalClose;
 let currentProject = null;
 let currentImageIndex = 0;
 
-// Open modal
 function openProjectModal(projectKey) {
     const project = projects[projectKey];
     if (!project) return;
     
     currentProject = project;
     currentImageIndex = 0;
-    
-    // Set title and description
+
     document.getElementById('modalTitle').textContent = project.title;
     document.getElementById('modalDescription').innerHTML = project.description;
     
-    // Handle gallery
     const gallery = document.getElementById('modalGallery');
     if (project.hasGallery && project.images) {
         gallery.style.display = 'block';
@@ -289,21 +268,18 @@ function openProjectModal(projectKey) {
     document.body.style.overflow = 'hidden';
 }
 
-// Close modal
 function closeProjectModal() {
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
     currentProject = null;
 }
 
-// Update gallery display
 function updateGallery() {
     if (!currentProject || !currentProject.images) return;
     
     const galleryImage = document.getElementById('galleryImage');
     galleryImage.src = currentProject.images[currentImageIndex];
     
-    // Update indicators
     const indicators = document.getElementById('galleryIndicators');
     indicators.innerHTML = '';
     currentProject.images.forEach((_, index) => {
@@ -317,31 +293,26 @@ function updateGallery() {
     });
 }
 
-// Initialize modal
 function initModal() {
     modal = document.getElementById('projectModal');
     modalClose = document.querySelector('.modal-close');
     
     if (!modal || !modalClose) return;
     
-    // Close button click
     modalClose.onclick = closeProjectModal;
     
-    // Click outside modal to close
     window.onclick = function(event) {
         if (event.target === modal) {
             closeProjectModal();
         }
     }
     
-    // Escape key to close
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && modal.style.display === 'flex') {
             closeProjectModal();
         }
     });
     
-    // Gallery navigation
     const prevBtn = document.querySelector('.gallery-prev');
     const nextBtn = document.querySelector('.gallery-next');
     
@@ -364,7 +335,6 @@ function initModal() {
     }
 }
 
-// Initialize project click handlers
 function initProjectClickHandlers() {
     const projectItems = document.querySelectorAll('.project-item');
     const projectKeys = ['angklung', 'babatngon', 'mathpop', 'blowlock'];
@@ -376,15 +346,11 @@ function initProjectClickHandlers() {
                 openProjectModal(projectKeys[index]);
             }
         };
-        
-        // Add pointer cursor
+
         item.style.cursor = 'pointer';
     });
 }
 
-// ==================== INITIALIZE EVERYTHING ====================
-
-// Initialize theme and all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     loadTheme();
     initButtons();

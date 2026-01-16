@@ -523,7 +523,7 @@ body {
     font-weight: 400;
 }
 
-/* ==================== MODAL STYLES ==================== */
+
 .modal {
     display: none;
     position: fixed;
@@ -811,7 +811,7 @@ body {
     }
 }
 
-/* Mobile Landscape and Small Tablets (768px and below) */
+
 @media (max-width: 768px) {
     .profile-compact {
         flex-direction: column;
@@ -919,7 +919,7 @@ body {
     }
 }
 
-/* Mobile Portrait (640px and below) */
+
 @media (max-width: 640px) {
     .top-header {
         padding: 1.5rem 1rem;
@@ -978,7 +978,6 @@ body {
     }
 }
 
-/* Small Mobile (480px and below) */
 @media (max-width: 480px) {
     .top-header {
         padding: 1.25rem 1rem;
@@ -1138,7 +1137,6 @@ body {
     }
 }
 
-/* Extra Small Mobile (375px and below) */
 @media (max-width: 375px) {
     .profile-image-compact {
         width: 90px;
