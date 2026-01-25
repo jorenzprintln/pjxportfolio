@@ -76,7 +76,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const projects = {
     blowlock: {
         title: "BlowLock - File Encryption App",
-        hasGallery: false,
+        hasGallery: true,
+    images: [
+        'public/images/blowlock/1000007458 (1).jpg',
+        'public/images/blowlock/1000007459 (1).jpg',
+        'public/images/blowlock/1000007460 (1).jpg',
+        'public/images/blowlock/1000007461 (1).jpg',
+        'public/images/blowlock/1000007462 (1).jpg',
+        'public/images/blowlock/1000007463 (1).jpg',
+        'public/images/blowlock/1000007464 (1).jpg',
+    ],
         description: `
             <p><strong>BlowLock</strong> is a mobile application designed to provide secure file encryption and decryption capabilities. The app empowers users to protect their sensitive files with a password-based encryption system.</p>
             
