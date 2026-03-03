@@ -1143,3 +1143,32 @@ body {
         height: 90px;
     }
 }
+/* ==================== ELECTRIC BORDER (Profile Picture) ==================== */
+/* Replace the electric border CSS at the bottom of your styles.css with this */
+
+.electric-border-wrapper {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    overflow: visible !important;
+}
+
+/* The canvas extends outside — parent containers must not clip it */
+.electric-border-canvas {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Prevent any ancestor from clipping the canvas glow */
+.profile-compact {
+    overflow: visible !important;
+}
+
+.top-header {
+    overflow: visible !important;
+}
+
+.header-content {
+    overflow: visible !important;
+}
